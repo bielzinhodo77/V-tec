@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pagina de login</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            background: linear-gradient(45deg, #4a90e2, purple);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .login-container{
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            width: 320px;
+            text-align: center;
+            animation: fadeInUp 1s ease-out;
+        }
+        h1{
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #4a90e2;
+            animation: slideIn 1s ease-out;
+        }
+        .input-field{
+            margin-bottom: 20px;
+            position: relative;
+            width: 100%;
+        }
+
+        .input-field input{
+            width: 100%;
+            padding: 10px;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .input-field input:focus{
+            border-color: #4a90e2;
+        }
+
+        .input-field label{
+            position: absolute;
+            top: -10px;
+            left: 10px;
+            font-size: 0.9rem;
+            color: #4a90e2;
+        }
+
+        .login-button{
+            background-color: purple;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            width: 100%;
+        }
+
+        .login-button:hover{
+            transform: translateY(-3px);
+        }
+
+        .back-button{
+            background-color: #f1f1f1;
+            color: #4a90e2;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            margin-top: 15px;
+            width: 100%;
+            transition: transform 0.3s ease;
+        }
+
+        .back-button:hover{
+            transform: translateY(-3px);
+        }
+
+        @keyframes fadeInUp{
+            0%{
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            100%{
+                opacity: 1;
+                transform: translateY(0);
+
+            }
+        }
+
+        @keyframes slideIn {
+            0%{
+                transform: translateX(-100%);
+            }
+            100%{
+                transform: translateX(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h1>Bem-vindo</h1>
+        <form id="loginForm" onsubmit="return login();">
+            <div class="input-field">
+                <input type="text" id="username" placeholder="usuario" required>
+                <label for="username">usuario</label>
+            </div>
+            <div class="input-field">
+                <input type="password" id="password" placeholder="senha" required>
+                <label for="password">senha</label>
+            </div>
+            <button type="submit" class="login-button">Entrar</button>
+        </form>
+        <button type="button" class="back-button" href="lcde.html" onclick="goBack()">Voltar</button>
+    </div>
+  <script>
+    function login(){
+        const username = document.getElementById('username').value;
+        const password = document.getElementById('password').value;
+
+        if (username === "admin" && password === "12345") {
+
+            window.location.href = "principal.html";
+            return false;
+         }else{
+            alert("credenciais invalidas. tente novamente");
+            return false;
+         }
+    }
+
+    function goBack(){
+        window.history.back();
+    }
+  </script>
+</body>
+</html>
